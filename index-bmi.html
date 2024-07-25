@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BMI calculate</title>
+    <meta name="robots" content="notindex,nofollow" />
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap"
+     rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css?family=Caveat&display=swap" rel="stylesheet"> -->
+    <!-- <link
+      href="https://fonts.googleapis.com/css2?family=Playwrite+PL:wght@100..400&display=swap"
+      rel="stylesheet"
+    /> -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Potta+One&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Web Icon -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/
+   all.min.css"
+    />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico" />
+
+    <!-- CSS Link -->
+    <link rel="stylesheet" href="style-bmi.css" />
+
+    <style>
+      #head-in .logo:hover {
+        animation: heart 1.25s linear infinite;
+      }
+      @keyframes heart {
+        from {
+          transform: scale(1);
+        }
+        10% {
+          transform: scale(1.2);
+        }
+      }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.polyfills.min.js"></script>
+  </head>
+  <body>
+    <div class="cursor-dot" data-cursor-dot></div>
+    <div class="cursor-outline" data-cursor-outline></div>
+    <header>
+      <div class="parallax_box">
+        <div id="head-in">
+          <div class="header">
+            <div class="parallax_content background">
+              <h1 class="title">Healthy Life with BMI</h1>
+              <a href="#"
+                ><img src="img/bmi.png" class="logo" alt="BMI calculate logo"
+              /></a>
+
+              <div class="topnav animate slideInLeft">
+                <nav>
+                  <ul>
+                    <li>
+                      <a
+                        href="https://oceans-nadia.com/special_sites/diet"
+                        target="_blank"
+                        >減量レシピ<span>&#x266A;</span></a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="https://athleterecipe.com/recipe/purpose/weightgain"
+                        target="_blank"
+                        >増量レシピ<span>&#x266A;</span></a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="https://www.jpm1960.org/kawara/08/202106.html"
+                        target="_blank"
+                        >健康に関する情報 <span>&#x273F;</span></a
+                      >
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- BMI Info -->
+    <div class="parallax_box">
+      <div class="parallax_content bodybackground">
+        <main class="main-wrap">
+          <div class="main">
+            <section class="bmi-info">
+              <h2 class="animate slideInLeft">BMIとは？</h2>
+              <p class="animate slideInLeft animate--slow">
+                &#x27A2; BMI（Body Mass
+                Index）はボディマス指数と呼ばれ、体重と身長から算出される肥満度を表す体格指数です。子供には別の指数が存在しますが、成人ではBMIが国際的な指標として用いられています。健康を維持するためは日頃からBMIを把握することが重要です。
+              </p>
+              <h2 class="animate slideInLeft animate--slow-2s">
+                BMI算出の方法は？
+              </h2>
+              <p class="animate slideInLeft animate--slow-2-5s">
+                BMI ＝ 体重kg ÷ (身長m)<sup>2</sup> <br />
+                適正体重 ＝ (身長m)<sup>2</sup> ×22
+              </p>
+            </section>
+            <div class="container animate slideInLeft">
+              <h1>BMI値計算</h1>
+              <div class="form-group">
+                <label for="height">身長 (cm)</label>
+                <input type="number" id="height-input" inputmode="numeric" />
+              </div>
+
+              <div class="form-group">
+                <label for="weight">体重 (kg)</label>
+                <input type="number" id="weight-input" inputmode="numeric" />
+              </div>
+              <button id="button-submit" class="btn" onclick="calculateBMI()">
+                <span>&#x263B;</span> 計算
+              </button>
+
+              <section>
+                <div class="result">
+                  <p class="bmi-result">BMI値</p>
+                  <div id="result"></div>
+                  <div id="judgement"></div>
+                  <div id="advice"></div>
+                  <button class="btn" onclick="reset()" value="Reset">
+                    <span>&#x2297;</span> クリア
+                  </button>
+                </div>
+              </section>
+            </div>
+            <div class="bmi-info">
+              <h2 class="animate slideInLeft">BMIの値から何がわかるの？</h2>
+              <p class="animate slideInLeft animate--slow">
+                &#x27A2;
+                WHOの国際的な基準によると、BMI25以上が過体重、30以上が肥満です。しかし、日本人を含むアジア人の場合、BMI25以下であっても2型糖尿病や循環器の病気の発生リスクが高いとされています。<br />
+                <br />
+                さらに肥満度は以下のように分類されています。
+              </p>
+              <table class="bmi-table animate slideInLeft animate--slow">
+                <tr>
+                  <th>BMI</th>
+                  <th>判定</th>
+                </tr>
+                <tr>
+                  <td>18.5未満</td>
+                  <td>低体重</td>
+                </tr>
+                <tr>
+                  <td>18.5以上25.0未満</td>
+                  <td>普通体重</td>
+                </tr>
+                <tr>
+                  <td>25.0以上30.0未満</td>
+                  <td>肥満（1度）</td>
+                </tr>
+                <tr>
+                  <td>30.0以上35.0未満</td>
+                  <td>肥満（2度）</td>
+                </tr>
+                <tr>
+                  <td>35.0以上40.0未満</td>
+                  <td>肥満（3度）</td>
+                </tr>
+                <tr>
+                  <td>40.0以上</td>
+                  <td>肥満（4度）</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+
+          <!-- ARTICLE -->
+
+          <aside class="sidebar">
+            <h2 class="animate slideInLeft">食と健康コラム記事 &#x21e9;</h2>
+            <div class="article-block">
+              <div
+                class="small-article-block animate slideInLeft animate--slow"
+              >
+                <img
+                  class="article-img"
+                  src="img/article3.jpg"
+                  alt="Health Topic 1"
+                />
+                <div class="article-info">
+                  <h3>
+                    <a
+                      href="https://www.familyset.jp/column/%E9%A3%9F%E7%89%A9%E7%B9%8A%E7%B6%AD%E3%81%AE%E3%83%80%E3%82%A4%E3%82%A8%E3%83%83%E3%83%88%E6%B4%BB%E7%94%A8%E6%B3%95%EF%BD%9C%E3%81%8A%E3%81%99%E3%81%99%E3%82%81%E9%A3%9F%E6%9D%90%E3%81%AB%E3%81%A4/"
+                      target="_blank"
+                      >食物繊維のダイエット活用法｜おすすめ食材についても解説</a
+                    >
+                  </h3>
+
+                  <p>投稿日: 2024.05.20</p>
+                </div>
+              </div>
+
+              <div
+                class="small-article-block animate slideInLeft animate--slow"
+              >
+                <img
+                  class="article-img"
+                  src="img/article2.jpg"
+                  alt="Health Topic 2"
+                />
+                <div class="article-info">
+                  <h3>
+                    <a
+                      href="https://www.familyset.jp/column/%E4%BD%8E%E7%B3%96%E8%B3%AA%E3%82%B9%E3%82%A4%E3%83%BC%E3%83%84%E3%81%AE%E7%A8%AE%E9%A1%9E%EF%BD%9C%E3%82%B3%E3%83%B3%E3%83%93%E3%83%8B%E3%83%BB%E5%B0%82%E9%96%80%E5%BA%97%E3%81%A7%E9%81%B8%E3%81%B6/"
+                      target="_blank"
+                      >低糖質スイーツの種類｜コンビニ・専門店で選ぶ際の注意点も解説</a
+                    >
+                  </h3>
+                  <p>投稿日: 2024.02.09</p>
+                </div>
+              </div>
+
+              <div
+                class="small-article-block animate slideInLeft animate--slow"
+              >
+                <img
+                  class="article-img"
+                  src="img/article5.jpeg"
+                  alt="Health Topic 3"
+                />
+                <div class="article-info">
+                  <h3>
+                    <a
+                      href="https://www.familyset.jp/column/%e5%bf%99%e3%81%97%e3%81%84%e5%90%88%e9%96%93%e3%81%ae%e8%85%b8%e6%b4%bb%e3%81%ab%e3%80%8c%e3%82%b3%e3%83%b3%e3%83%93%e3%83%8b%e3%80%8d%e3%82%92%e3%83%95%e3%83%ab%e6%b4%bb%e7%94%a8%ef%bc%81%e9%a3%9f/"
+                      target="_blank"
+                      >忙しい合間の腸活に「コンビニ」をフル活用！食品の選び方も解説</a
+                    >
+                  </h3>
+                  <p>投稿日: 2023.11.21</p>
+                </div>
+              </div>
+
+              <div
+                class="small-article-block animate slideInLeft animate--slow"
+              >
+                <img
+                  class="article-img"
+                  src="img/article7.jpg"
+                  alt="Health Topic 4"
+                />
+                <div class="article-info">
+                  <h3>
+                    <a
+                      href="https://247-workout.jp/article/diet/9821/#:~:text=%E3%83%80%E3%82%A4%E3%82%A8%E3%83%83%E3%83%88%E4%B8%AD%E3%81%AE1%E6%97%A5%E3%82%841%E9%A3%9F%E3%81%AE%E6%91%82%E5%8F%96%E3%82%AB%E3%83%AD%E3%83%AA%E3%83%BC%E7%9B%AE%E5%AE%89,-%E3%83%80%E3%82%A4%E3%82%A8%E3%83%83%E3%83%88%E3%81%A7%E4%BD%93%E9%87%8D&text=%E4%BE%8B%E3%81%88%E3%81%B0%E3%80%8118%EF%BD%9E29%E6%AD%B3,%EF%BD%9E700kcal%E3%81%8C%E7%9B%AE%E5%AE%89%E3%81%A7%E3%81%99%E3%80%82"
+                      target="_blank"
+                      >ダイエット中の1食あたりの摂取カロリー目安は？計算方法や制限するポイントを解説</a
+                    >
+                  </h3>
+                  <p>投稿日: 2023.10.16</p>
+                </div>
+              </div>
+
+              <div
+                class="small-article-block animate slideInLeft animate--slow"
+              >
+                <img
+                  class="article-img"
+                  src="img/article8.jpg"
+                  alt="Health Topic 5"
+                />
+                <div class="article-info">
+                  <h3>
+                    <a
+                      href="https://247-workout.jp/article/other/9815/"
+                      target="_blank"
+                      >理想の睡眠時間は何時間？睡眠不足による影響や質の高め方も解説</a
+                    >
+                  </h3>
+                  <p>投稿日: 2023.10.16</p>
+                </div>
+              </div>
+
+              <div
+                class="small-article-block animate slideInLeft animate--slow"
+              >
+                <img
+                  class="article-img"
+                  src="img/article4.jpg"
+                  alt="Health Topic 6"
+                />
+                <div class="article-info">
+                  <h3>
+                    <a
+                      href="https://www.familyset.jp/column/%e7%b3%96%e8%b3%aa%e5%88%b6%e9%99%90%e4%b8%ad%e3%81%ae%e3%81%8a%e3%81%99%e3%81%99%e3%82%81%e6%9c%9d%e3%81%94%e3%81%af%e3%82%93%ef%bc%81ng%e4%be%8b%e3%82%84%e7%b0%a1%e5%8d%98%e6%9c%9d%e3%83%ac%e3%82%b7/"
+                      target="_blank"
+                      >糖質制限中のおすすめ朝ごはん！NG例や簡単朝レシピを紹介</a
+                    >
+                  </h3>
+                  <p>投稿日: 2023.04.27</p>
+                </div>
+              </div>
+
+              <div
+                class="small-article-block animate slideInLeft animate--slow"
+              >
+                <img
+                  class="article-img"
+                  src="img/article1.png"
+                  alt="Health Topic 7"
+                />
+                <div class="article-info">
+                  <h3>
+                    <a
+                      href="https://yoshiuchi-cl.com/blog/?p=285"
+                      target="_blank"
+                      >健康のために理想的な体重と必要なエネルギー量について</a
+                    >
+                  </h3>
+                  <p>投稿日: 2023.04.06</p>
+                </div>
+              </div>
+
+              <div
+                class="small-article-block animate slideInLeft animate--slow"
+              >
+                <img
+                  class="article-img"
+                  src="img/article6.jpg"
+                  alt="Health Topic 8"
+                />
+                <div class="article-info">
+                  <h3>
+                    <a
+                      href="https://www.familyset.jp/column/%e8%87%aa%e5%ae%85%e3%81%ae%e9%81%8b%e5%8b%95%e3%81%a7%e5%81%a5%e5%ba%b7%e3%81%ab%ef%bc%81%e5%ae%b6%e3%81%ae%e4%b8%ad%e3%81%a7%e3%81%a7%e3%81%8d%e3%82%8b%e3%81%8a%e6%89%8b%e8%bb%bd%e5%81%a5%e5%ba%b7/"
+                      target="_blank"
+                      >自宅の運動で健康に！家の中でできるお手軽健康法</a
+                    >
+                  </h3>
+                  <p>投稿日: 2020.03.31</p>
+                </div>
+              </div>
+            </div>
+          </aside>
+
+          <script src="bmi-calculate.js"></script>
+          <!-- <script
+            type="module"
+            src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+          ></script>
+          <script
+            nomodule
+            src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+          ></script> -->
+          <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script> -->
+        </main>
+      </div>
+    </div>
+  </body>
+</html>
